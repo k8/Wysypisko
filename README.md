@@ -8,7 +8,7 @@ Dla kodu (z repo Archa):
 Dla dokumentacji:
 
 - xelatex (texlive)
-- czcionki Linux Libertine <http://www.linuxlibertine.org/> -- pliki *.otf skopiować do katalogu ~/.fonts
+- czcionki Linux Libertine <http://www.linuxlibertine.org/> -- pliki *.otf skopiować cza do katalogu ~/.fonts
 
 # Budowanie
 
