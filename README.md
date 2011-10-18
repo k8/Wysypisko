@@ -11,6 +11,7 @@ Dla dokumentacji:
 
 - xelatex (texlive)
 - czcionki Linux Libertine <http://www.linuxlibertine.org/> -- pliki *.otf skopiować cza do katalogu ~/.fonts
+- oraz czcionka Inconsolata (pakiet community/ttf-inconsolata)
 
 # Budowanie
 
