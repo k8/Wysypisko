@@ -13,8 +13,8 @@ Dla dokumentacji:
 # Budowanie
 
 - wszystko: `make` w głównym katalogu
-- tylko dokumentacja: `make` w katalogu docs lub `make docs` w katalogu głównym
-- tylko program: `make` w katalogu src lub `make program` w katalogu głównym
+- tylko dokumentacja: `make` w katalogu `docs` lub `make docs` w katalogu głównym
+- tylko program: `make` w katalogu `src` lub `make program` w katalogu głównym
 
 Po zbudowaniu program jest w katalogu `build/program` a dokumentacja w `build/docs`.
 
