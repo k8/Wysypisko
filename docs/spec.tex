@@ -1,0 +1,115 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[MeX]{polski}
+%\usepackage[cm]{fullpage}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{hyphenat}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+%\usepackage{mathspec}
+%\usepackage{MnSymbol}
+%\usepackage{mathabx}
+
+\linespread{1.5}
+
+% Scale=MatchLowercase <- nie wiem co to robi, można dodać poniżej
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[
+  Ligatures={Common, Rare},
+  Numbers={Monospaced,OldStyle},
+  Scale=1.2
+]{Linux Libertine O}
+\setmonofont{Inconsolata}
+
+\title{Wysypisko}
+\author{Sławek Borzdyński\\Michał Charmas\\Kasia Krawczyk\\Szymon Witamborski}
+\date{9 października 2011}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Koncepcja gry}
+
+Gra ma być wariantem gry typu Tower Defence. Modyfikacja schematu polega na tym, że na arenie będzie wielu graczy współzawodniczących o to kto pozostanie przy życiu.
+
+\section{Kluczowe zamysły}
+
+Gracze lądują statkami kosmicznymi równo rozmieszczeni na okręgu. Na przeciwko każdego gracza znajduje się dziura w ziemi, z której wychodzą roboty-śmieciarze starające się rozebrać statki i zanieść zdobyte części na wysypisko znajdujące się na środku planszy. Gracze stawiają różnych typów zapory uniemożliwiające robotom dotarcie do statków. Wygrywa ostatni ostały gracz.
+
+\section{Wykorzystane technologie}
+
+OGRE, coś do serwera, Python ?
+
+\section{Wymagania sprzętowe}
+
+Gra ma działać na systemach Linux i Windows na sprzęcie ze średniej półki (ma działać płynnie na wbudowanych układach Intela).
+
+\chapter{Historia}
+
+Nastały ciężkie czasy dla Układu Słonecznego. Tak ciężkie, że nikt nie potrafi ustalić który jest rok\ldots
+
+Najbardziej wartościowym i poszukiwanym towarem stały się części zamienne do statków kosmicznych. Niestety od tysięcy lat nikt ich nie produkuje. Wiedza jak je wytwarzać zniknęła w trakcie konfliktu atomowego na Ziemi.
+
+Ostało się tylko jedno miejsce, Wysypisko, posiadające ten cenny towar. Strzegą je tępe roboty, Śmieciarze, których jedynym zadaniem i rozrywką jest rozbieranie przybyłych statków i gromadzenie części.
+
+Wysypisko otoczone jest lądowiskiem dla śmiałków, jednak natychmiast znajdują się w potrzasku, ponieważ po wylądowaniu znajdują się bezpośrednio na drodze Śmieciarzy do Wysypiska.
+
+Jednak, Śmieciarze są na tyle gościnni, że oddadzą części ale tylko jednemu z przybyłych gości.
+
+\chapter{Rozgrywka}
+
+Gracze są rozmieszczeni równomiernie wokół środka areny. Każdy gracz broni swojego statku ustawiając budowle utrudniające wrogim jednostkom dotarcie do niego. Rozgrywka składa się z etapów. Każdy etap zawiera dwie fazy: budowy i walki. Faza budowy trwa przez określoną ilość czasu. Gracze przygotowują się w niej do fazy walki poprzez rozmieszczanie budowli na arenie. Podczas fazy walki wrogie jednostki przemieszczają się z określonych punktów przy krawędzi areny w kierunku obiektów należących do graczy. Faza kończy się w momencie, kiedy wszystkie wrogie jednostki zostaną zniszczone lub dotrą do składowiska na środku areny.
+
+\section{Etap budowy}
+
+Gracz ustawia w wybranych przez siebie miejscach budowle. Może również naprawiać bądź ulepszać postawione wcześniej budowle. Każda z tych czynności kosztuje określoną liczbę części i trwa określony czas.
+
+Budowle mają "punkty życia".
+
+\subsection{Dostępne typy budowli}
+
+\begin{description}
+\item[wieżyczki niszczące] \hfill\\ ulepszalne na kilku poziomach, reszta do przemyślenia.
+\item[bariery] \hfill
+	\begin{description}
+	\item[blokująca (rozbieralna)] \hfill\\ robot, który napotkał ją na drodze zatrzymuje i próbuje ją rozebrać zabierając jej punkty życia. Przechodzi po zniszczeniu przeszkody.
+	\item[bariera zwalniająca wroga] \hfill\\ plama oleju (?), każda jednostka, która przez nią przejdzie zabiera ileś punktów życia.
+	\item[bariera myląca (zmieniająca) ścieżkę wroga] \hfill\\ robot, który ją napotkał zmienia tor ruchu. bariera umiera po określonym czasie albo po określonej liczbie napotkanych robotów.
+	\end{description}
+\end{description}
+\section{Etap walki}
+
+Wrogowie atakują. Można budować j/w tylko, że wolniej.
+
+\subsection{Rodzaje wrogów}
+
+\begin{description}
+\item[niszczyciel statków] \hfill\\ celem jest statek, rozwala tylko niezbędne przeszkody
+\item[niszczyciel barier] \hfill\\ celem są przeszkody, przy braku przeszkód idą do statków.
+\end{description}
+
+\subsection{Możliwości gracza w trakcie walki}
+\begin{itemize}
+\item naprawa
+\item ulepszanie
+\end{itemize}
+
+\section{Zakończenie rozgrywki}
+
+Zostaje jeden gracz i odlatuje z potrzebnymi częściami, szczęśliwy.
+
+
+\chapter{Interfejs użytkownika}
+
+\chapter{Grafika}
+
+\chapter{Muzyka}
+
+\chapter{Do przemyślenia}
+
+\begin{itemize}
+\item kradziejowanie?
+\item sposób zdybania graczy (serwer centralny z "pokojami" a może z przydzielaniem współzawodników FIFO?)
+\end{itemize}
+
+\end{document}
