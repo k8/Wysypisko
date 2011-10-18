@@ -4,6 +4,8 @@ Dla kodu (z repo Archa):
 
 - ogre
 - mygui
+- boost
+- boost-lib
 
 Dla dokumentacji:
 
