@@ -317,6 +317,7 @@ bool BaseApplication::keyPressed( const OIS::KeyEvent &arg )
             newVal = "Bilinear";
             tfo = Ogre::TFO_BILINEAR;
             aniso = 1;
+            break;
         }
 
         Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
@@ -341,6 +342,7 @@ bool BaseApplication::keyPressed( const OIS::KeyEvent &arg )
         default:
             newVal = "Solid";
             pm = Ogre::PM_SOLID;
+            break;
         }
 
         mCamera->setPolygonMode(pm);

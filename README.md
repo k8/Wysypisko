@@ -4,6 +4,7 @@ Dla kodu (z repo Archa):
 
 - ogre
 - mygui
+- gdb
 
 Dla dokumentacji:
 
@@ -47,3 +48,28 @@ system budowniczy sobie podłapie.
 Katalogi z nagłówkami dodajemy do INCLUDES w Makefile'u odpowiedniej
 części. Biblioteki do zlinkowania dodajemy do pliku `src/link.mk` wg
 instrukcji tam zawartej.
+
+# Eclipse
+
+Póki co nie jestem pewien czy wszystko działa. Konfiguracja Eclipse wygląda m/w tak:
+
+1. Instalujemy Eclipse C++ [stąd](http://www.eclipse.org/downloads/packages/eclipse-ide-cc-linux-developers-includes-incubating-components/indigosr1) albo doinstalowujemy CDT jeśli mamy już Eclipse.
+1. Tworzymy przestrzeń roboczą gdziekolwiek byle nie w katalogu projektu (nie musimy tworzyć nowej przestrzeni roboczej jeśli jakąś już mamy)
+2. Importujemy projekt do workspace'a:
+   1. File -> Import...
+   2. General -> Existing Projects into Workspace
+   3. w następnym ekranie wybieramy "root directory": główny katalog projetku
+   4. Finish
+3. Powinien się załadować projekt. Na tym etapie proponuję przetestować budowanie i czyszczenie.
+Cały kod powinien pozostać w katalogu gdzie sklonowaliśmy projekt z gita i tam też będzie się budował.
+4. Importujemy konfigurację uruchomieniową:
+   1. File -> Import...
+   2. Run/Debug -> Launch Configurations
+   3. Wybieramy katalog projektu w "From Directory"
+   4. Klikamy w "Wysypisko" (nie zaznaczając kratki).
+   5. Zaznaczamy "Wysypisko Default.launch"
+5. W tym momencie projekt powinien się uruchamiać i debugować (o ile mamy gdb zainstalowane)
+
+Ogólna czerwoność na plikach h i cpp teoretycznie powinna zniknąć po
+przebudowaniu i zrobieniu "Run C/C++ Code Analysis z menu
+kontekstowego (tzn. mi tak się stało za którymś razem)
