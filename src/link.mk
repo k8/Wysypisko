@@ -3,7 +3,9 @@
 # bibliotek.
 
 # OGRE
-LIBS += -lOgreMain -lOIS
+#LIBS += -lOgreMain -lOIS
+
+LIBS = $(shell pkg-config --libs `cat deps`)
 
 OBJECTS=$(wildcard *.o)
 

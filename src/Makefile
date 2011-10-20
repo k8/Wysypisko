@@ -1,5 +1,6 @@
 export CXX=g++ -Wall
 export PROGRAM_OUTPUT_DIR = $(patsubst %/src,%/build/program,$(CURDIR))
+export PROGRAM_OUTPUT_DEPS = $(patsubst %/src,%/build/program/deps,$(CURDIR))
 
 PROGRAM_OUTPUT_MAKEFILE = $(PROGRAM_OUTPUT_DIR)/Makefile
 # wyciąga nazwy katalogów, usuwa "/" z wyniku polecenia ls -d */
