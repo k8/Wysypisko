@@ -49,11 +49,10 @@ system budowniczy sobie podłapie.
 
 # Dodawanie nowych zależności
 
-Zależności są obsługiwane przez pkg-config. Do pliku Makefile w
-podkatalogu projektu, gdzie potrzebujemy danej biblioteki (np. OGRE w
-`play`) dodajemy do zmiennej DEPS (przez +=) zależności używając nazw
-znanych pkg-config'owi (`pkg-config --list-all` wyciąga nazwy i opisy
-wszystkich pakietów o których wie).
+Zależności są obsługiwane przez pkg-config. W pliku Makefile każdej
+części ustawiamy w zmiennej DEPS zależności dla tej konkrentej częsci
+(np. OGRE w `play`) używając nazw znanych pkg-config'owi (`pkg-config
+--list-all` wyciąga nazwy i opisy wszystkich pakietów, o których wie).
 
 # Eclipse
 
