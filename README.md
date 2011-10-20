@@ -2,6 +2,7 @@
 
 Dla kodu (z repo Archa):
 
+- g++, make, pkg-config
 - ogre
 - mygui
 - gdb
@@ -48,9 +49,11 @@ system budowniczy sobie podłapie.
 
 # Dodawanie nowych zależności
 
-Katalogi z nagłówkami dodajemy do INCLUDES w Makefile'u odpowiedniej
-części. Biblioteki do zlinkowania dodajemy do pliku `src/link.mk` wg
-instrukcji tam zawartej.
+Zależności są obsługiwane przez pkg-config. Do pliku Makefile w
+podkatalogu projektu, gdzie potrzebujemy danej biblioteki (np. OGRE w
+`play`) dodajemy do zmiennej DEPS (przez +=) zależności używając nazw
+znanych pkg-config'owi (`pkg-config --list-all` wyciąga nazwy i opisy
+wszystkich pakietów o których wie).
 
 # Eclipse
 

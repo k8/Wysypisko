@@ -1,10 +1,12 @@
 # Standardowy szablon do katalogów z plikami cpp.
+#
 # użycie:
 #
 # # zależności tak jak dla pkg-config
 # DEPS = OGRE
 # # opcjonalnie dodatkowe include'y
 # INCLUDES = -I/includedir1 -I/includedir2...
+# # obowiązkowo na końcu:
 # include ../cpp.mk
 
 INPUTS = $(wildcard *.cpp)

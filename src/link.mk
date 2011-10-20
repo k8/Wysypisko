@@ -1,11 +1,4 @@
-# Zależności dla każdej biblioteki dodawajny oddzielnie i komentujmy
-# dla jakiej biblioteki one są. Pomoże to przy ew. usuwaniu zbędnych
-# bibliotek.
-
-# OGRE
-#LIBS += -lOgreMain -lOIS
-
-LIBS = $(shell pkg-config --libs `cat deps`)
+LIBS = $(shell pkg-config --libs $(shell cat $(PROGRAM_OUTPUT_DEPS)))
 
 OBJECTS=$(wildcard *.o)
 
