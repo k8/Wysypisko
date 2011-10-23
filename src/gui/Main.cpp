@@ -11,7 +11,6 @@
 #include <MyGUI.h>
 #include <MyGUI_OgrePlatform.h>
 
-
 int main(int argc, char ** argv) {
 	Ogre::String configFileName = "";
 	Ogre::String pluginsFileName = "plugins.cfg";
@@ -31,15 +30,14 @@ int main(int argc, char ** argv) {
 
 	Ogre::RenderWindow *window = NULL;
 
-	pRoot->initialise(false, "Wysypisko", "");
+	pRoot->initialise(false, "", "");
 
 	window = pRoot->createRenderWindow("Wysypisko", 1024, 768, false, NULL);
 
-	while(!window->isClosed()) {
+	while (!window->isClosed()) {
 		Ogre::WindowEventUtilities::messagePump();
 	}
 
 	return 0;
 }
-
 
