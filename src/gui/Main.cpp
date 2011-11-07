@@ -8,6 +8,9 @@
 #include <OgreWindowEventUtilities.h>
 #include <OgreColourValue.h>
 
+// OIS
+#include <OIS.h>
+
 // MyGUI
 #include <MyGUI.h>
 #include <MyGUI_OgrePlatform.h>
@@ -35,6 +38,23 @@ void setupResourcesPath(std::auto_ptr<Ogre::Root>& root, const Ogre::String& fil
     }
 }
 
+class InputListener : public OIS::MouseListener {
+public:
+	virtual ~InputListener() {}
+	virtual bool mouseMoved(const OIS::MouseEvent &arg) {
+		MyGUI::InputManager::getInstance().injectMouseMove(arg.state.X.abs, arg.state.Y.abs, arg.state.Z.abs);
+		return true;
+	}
+	virtual bool mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id) {
+		MyGUI::InputManager::getInstance().injectMousePress(arg.state.X.abs, arg.state.Y.abs, MyGUI::MouseButton::Enum(id));
+		return true;
+	}
+	virtual bool mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id) {
+		MyGUI::InputManager::getInstance().injectMouseRelease(arg.state.X.abs, arg.state.Y.abs, MyGUI::MouseButton::Enum(id));
+		return true;
+	}
+
+};
 
 int main(int argc, char ** argv) {
 	Ogre::String configFileName = "";
@@ -101,11 +121,27 @@ int main(int argc, char ** argv) {
 
 	window->setActive(true);
 
+	// input
+	size_t x11Handle = 0;
+	window->getCustomAttribute("WINDOW", &x11Handle);
+	OIS::InputManager *input = OIS::InputManager::createInputSystem(x11Handle);
+	OIS::Mouse *mouse = static_cast<OIS::Mouse*>(input->createInputObject(OIS::OISMouse, true));
+	InputListener inputListener;
+	mouse->setEventCallback(&inputListener);
+	//OIS::Keyboard *keyboard = static_cast<OIS::Keyboard*>(input->createInputObject(OIS::OISKeyboard, true));
+
+	const OIS::MouseState &mouseState = mouse->getMouseState();
+
 	while (!window->isClosed()) {
+
+		mouseState.width = window->getWidth();
+		mouseState.height = window->getHeight();
+		mouse->capture();
+		Ogre::WindowEventUtilities::messagePump();
+
+
 		window->update(true);
 		root->renderOneFrame();
-
-		Ogre::WindowEventUtilities::messagePump();
 	}
 
 	gui->shutdown();
