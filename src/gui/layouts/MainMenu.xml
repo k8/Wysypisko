@@ -3,12 +3,15 @@
 <MyGUI type="Layout">
  
     <Widget type="Button" skin="Button" position="10 10 300 26" align="Default" layer="Main" name="MyFirstButton" >
-        <Property key="Widget_Caption" value="Asdf!" />
+        <Property key="Widget_Caption" value="Gra jednoosobowa" />
     </Widget>
     
+    <Widget type="Button" skin="Button" position="10 50 300 26" align="Default" layer="Main">
+        <Property key="Widget_Caption" value="Gra wieloosobowa" />
+    </Widget>
     
-    <Widget type="Button" skin="Button" position="10 50 300 26" align="Default" layer="Main" name="MySecondButton" >
-        <Property key="Widget_Caption" value="Qwer!" />
+    <Widget type="Button" skin="Button" position="10 90 300 26" align="Default" layer="Main">
+        <Property key="Widget_Caption" value="Wyjście" />
     </Widget>
  
 </MyGUI>
