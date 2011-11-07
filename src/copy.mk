@@ -1,4 +1,5 @@
-# Użycie: (skopiuje wszystkie pliki 
+# Użycie: 
+# (skopiuje wszystkie pliki o rozszerzeniach podanych w liście EXTENSIONS)
 #
 # EXTENSIONS = cfg
 #
