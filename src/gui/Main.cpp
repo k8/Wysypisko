@@ -116,8 +116,10 @@ int main(int argc, char ** argv) {
 	MyGUI::Gui *gui = new MyGUI::Gui();
 	gui->initialise();
 
-	MyGUI::ButtonPtr button = gui->createWidget<MyGUI::Button>("Button", 10, 10, 300, 26, MyGUI::Align::Default, "Main");
-	button->setCaption("exit");
+	MyGUI::LayoutManager::getInstance().loadLayout("MainMenu.xml");
+
+	//MyGUI::ButtonPtr button = gui->createWidget<MyGUI::Button>("Button", 10, 10, 300, 26, MyGUI::Align::Default, "Main");
+	//button->setCaption("exit");
 
 	window->setActive(true);
 
