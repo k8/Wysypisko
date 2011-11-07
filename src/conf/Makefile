@@ -1,10 +1,4 @@
 # Kopiuje konfigurację stąd do katalogu wyjściowego
-INPUTS = $(wildcard *.cfg)
-OUTPUTS = $(patsubst %,$(PROGRAM_OUTPUT_DIR)/%,$(INPUTS))
+EXTENSIONS = cfg
 
-all: $(OUTPUTS)
-
-$(OUTPUTS): $(PROGRAM_OUTPUT_DIR)/% : %
-	cp $< $@
-
-.PHONY: all
+include ../copy.mk

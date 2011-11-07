@@ -19,11 +19,11 @@ INCLUDES += $(shell pkg-config --cflags $(DEPS))
 
 # W tym kroku dopisywane są zależności danej części do zależności dla
 # linkera.
-all: $(OBJECTS) Makefile
+cpp: $(OBJECTS) Makefile
 	echo $(DEPS) >> $(PROGRAM_OUTPUT_DEPS)
 	echo $(LIBS) >> $(PROGRAM_OUTPUT_LIBS)
 
 $(PROGRAM_OUTPUT_DIR)/%.o : %.cpp
 	$(CXX) $(INCLUDES) -c $< -o $@
 
-.PHONY: all
+.PHONY: cpp

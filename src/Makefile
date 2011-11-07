@@ -7,17 +7,24 @@ export PROGRAM_OUTPUT_LIBS = $(patsubst %/src,%/build/program/_libs,$(CURDIR))
 
 PROGRAM_OUTPUT_MAKEFILE = $(PROGRAM_OUTPUT_DIR)/Makefile
 # wyciąga nazwy katalogów, usuwa "/" z wyniku polecenia ls -d */
-INPUT_DIRS = $(patsubst %/,%,$(shell ls -d */))
+#INPUT_DIRS = $(patsubst %/,%,$(shell ls -d */))
+INPUT_DIRS = $(shell find * -type d)
 
 # kompiluje wszystkie katalogi i wywołuje linkowanie w katalogu
 # wyjściowym
-all: $(PROGRAM_OUTPUT_MAKEFILE)
+all: $(PROGRAM_OUTPUT_DIR) cleandeps $(INPUT_DIRS) $(PROGRAM_OUTPUT_MAKEFILE) link
+	
+cleandeps:
 	rm -rf $(PROGRAM_OUTPUT_DEPS) $(PROGRAM_OUTPUT_LIBS)
-	for DIR in $(INPUT_DIRS); do $(MAKE) -C $$DIR; done
-	$(MAKE) -C $(PROGRAM_OUTPUT_DIR)
+	
+$(INPUT_DIRS):
+	$(if $(wildcard $@/Makefile), $(MAKE) -C $@)
 
 $(PROGRAM_OUTPUT_DIR):
 	mkdir -p $(PROGRAM_OUTPUT_DIR)
+
+link:
+	$(MAKE) -C $(PROGRAM_OUTPUT_DIR)
 
 # kopiuje plik link.mk jako Makefile do katalogu wyjściowego, gdzie
 # wykona się linkowanie
@@ -27,4 +34,4 @@ $(PROGRAM_OUTPUT_MAKEFILE) : link.mk $(PROGRAM_OUTPUT_DIR)
 clean:
 	rm -rf $(PROGRAM_OUTPUT_DIR)
 
-.PHONY: all clean
+.PHONY: all clean cleandeps $(INPUT_DIRS) link
